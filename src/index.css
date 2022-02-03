@@ -240,6 +240,41 @@ margin-right: 12px;
   width: 100%;
 }
 
+.SceneTitle {
+  font-size: 2em;
+  font-weight: 400;
+  margin-top: 1em;
+}
+.SceneDisplay {
+  width: 85%;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.SceneDescription {
+  margin-top: .5em;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.UserInfo {
+  float: right;
+  display: inline-block;
+  margin-top:8px;
+}
+
+.SaveSceneButton {
+  margin-top: 16px;
+}
+
+.LinkedScenesList {
+  margin-top: 16px;
+}
+
 .cancelCompleteQuestButton {
   color: #FF0000;
 }
