@@ -48,8 +48,7 @@ const Auth = ({ setLoginScreen }) => {
     };
 
     return (
-        <div
-            className={
+        <div className={
                 "w-full h-full sm:h-auto sm:w-2/5 max-w-sm p-5 bg-white shadow flex flex-col text-base"
             }
         >
@@ -134,11 +133,6 @@ const Auth = ({ setLoginScreen }) => {
                 <div className="relative">
                     <div className="absolute inset-0 flex items-center">
                         <div className="w-full mx-1.5 border-t border-gray-300" />
-                    </div>
-                    <div className="relative flex justify-center text-sm leading-5">
-                        <span className="px-2 bg-white text-gray-500">
-                            Or continue with
-                        </span>
                     </div>
                 </div>
 
