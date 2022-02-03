@@ -5,6 +5,7 @@ import Home from "./components/Home";
 
 function App() {
     const [user, setUser] = useState(null);
+    const [loginScreen, setLoginScreen] = useState(false);
 
     useEffect(() => {
         const session = supabase.auth.session();
@@ -24,7 +25,7 @@ function App() {
 
     return (
         <div className="min-w-full min-h-screen flex items-center justify-center bg-gray-200">
-            {!user ? <Auth /> : <Home user={user} />}
+            {loginScreen ? <Auth setLoginScreen={setLoginScreen} /> : <Home user={user} setLoginScreen={setLoginScreen} /> }
         </div>
     );
 }

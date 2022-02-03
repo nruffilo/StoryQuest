@@ -14,8 +14,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.sceneLink {
+.SceneLink {
   pointer: cursor;
+  text-decoration: underline;
   
 }
 .noFlexGrow {
