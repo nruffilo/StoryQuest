@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sceneLink {
+  pointer: cursor;
+  
+}
+.noFlexGrow {
+  flex-grow:0;
+}
+
+.YourInviteCode {
+  display: inline-block;
+  float: right;
+  margin-right: 8px;
+}
+
+.addNewQuest, .confirmQuestCompletion, .templateScreen {
+  background-color: #ffffff;
+  width: 100%;
+  min-height: 360px;
+  max-width: 720px;
+}
+
+.IndividualReward input {
+  height: 24px;
+  width: 24px;
+  margin-right: 16px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.RewardsList>div:nth-child(odd) {
+  background-color: #AAAAFF;
+}
+
+.templateFull {
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  max-width: 720px;
+}
+
+.QuestCompletedScreen {
+  font-family: 'MedievalSharp', cursive;
+  color: #cccccc;
+}
+
+.QuestCompletedScreen h2 {
+  text-align: center;
+  margin-top: 128px;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.QuestCompletedScreen p {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 32px;
+}
+
+.confirmQuestCompletion {
+  font-family: 'MedievalSharp', cursive;
+  padding: 16px;
+}
+
+.confirmQuestCompletion h2 {
+  font-size: 2em;
+}
+
+.confirmQuestDescription {
+  font-size: 1.4em;
+}
+
+.spaceAtTheBottom {
+  margin-bottom: 64px;
+}
+
+.addNewQuest h2, .templateScreen h2 {
+  font-size: 1.5em;
+  margin-left: 12px;
+  margin-top: 12px;
+}
+
+.partyMemberList {
+  margin-left: 32px;
+}
+
+.templateScreen h3 {
+  font-size: 1.2em;
+  margin-left: 12px;
+  margin-top: 12px;
+}
+
+.addNewQuest label {
+  width: 100%;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+.buttonrow {
+  margin-top: 16px;
+}
+
+.heroDisplaySmall {
+  background-color: #CCCCCC;
+}
+
+.characterSheetLabel {
+  width: 100%;
+  display: block;
+  margin-top: 8px;
+}
+
+.smallHeroImage {
+  height: 48px;
+  display: inline-block;
+  margin-right: 14px;
+}
+
+.heroSmallDisplayName {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 32px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  display: inline-block;
+}
+
+.heroSmallExperience {
+  font-family: 'MedievalSharp', cursive;
+  font-size: 28px;
+}
+
+.heroSmallEditDetails {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  margin-left: 16px;
+  margin-right: 16px;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 600px) {
+  .smallHeroImage {
+    height: 32px;    
+  }
+  .heroSmallDisplayName {
+    font-size: 18px;
+  }
+  .heroSmallExperience {
+    font-size: 16px;
+  }
+}
+
+.heroXPDisplay {
+  display: inline-block;
+  width: 52px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+.heroCurrentXP, .heroNextLevelXP {
+  width: 100%;
+  text-align: center;
+}
+
+.heroCurrentXP {
+  border-bottom: 1px solid #000000;
+}
+
+.completeQuestButton {
+  
+}
+
+.giveMeSomeSpace {
+margin-right: 12px;
+}
+
+.listContainer {
+  max-height: 80vh;
+}
+
+.questList {
+  background-image : url("./paperbg.png");
+  box-shadow: 4px 4px #555555;
+}
+
+
+.questList div {
+  display: inline-block;
+  margin-left: 6px;
+/*  background-color: #CCCCCC;*/
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.questName {
+  font-size: 1.2em;
+  font-family: 'MedievalSharp', cursive;
+  font-weight: bold;
+  width: 80%;
+}
+.questSize {
+  font-size: .8em;
+  font-family: 'MedievalSharp', cursive;
+  font-weight: 300;
+  display:  inline-block;
+  margin-left: 16px;
+}
+.questSize::before {
+  content: "[";
+}
+.questSize::after {
+  content: "]";
+}
+
+.questReward {
+  width: 100%;
+}
+
+.cancelCompleteQuestButton {
+  color: #FF0000;
+}
+
+/** FOR FIREWORKS **/
+canvas {
+	cursor: crosshair;
+	display: block;
+}
+
+.QuestCompletedScreen {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color:#000000;
+  color: #DDDDDD;
+}
+
+.BackToQuestsFromQuestComplete {
+  position: absolute;
+  background-color: #CCFFCC;
+  color: #000000;
+  bottom: 20px;
+  right: 20px;
+}
+
+.clearFix {
+  clear: both;
+}
