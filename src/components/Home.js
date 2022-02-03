@@ -5,8 +5,8 @@ import SceneLink from "./SceneLink";
 import NewScene from "./NewScene";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
-/*import { ToastContainer, toast } from 'react-toastify';*/
-/*import 'react-toastify/dist/ReactToastify.css';*/
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = ({ user, setLoginScreen }) => {
     const [recoveryToken, setRecoveryToken] = useState(null);
@@ -91,7 +91,7 @@ const Home = ({ user, setLoginScreen }) => {
             setError(error);
         } else {
             console.log(updatedSceneData);
-            //toast("Scene Saved");
+            toast("Scene Saved");
         }
     }
 
@@ -229,7 +229,7 @@ const Home = ({ user, setLoginScreen }) => {
                             </div>
                         )}
                     </div>
-                    
+                    <ToastContainer/>
 
                 </div>
             case 'CreateScene':
