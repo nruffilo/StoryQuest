@@ -5,8 +5,8 @@ import SceneLink from "./SceneLink";
 import NewScene from "./NewScene";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+/*import { ToastContainer, toast } from 'react-toastify';*/
+/*import 'react-toastify/dist/ReactToastify.css';*/
 
 const Home = ({ user }) => {
     const [recoveryToken, setRecoveryToken] = useState(null);
@@ -46,7 +46,7 @@ const Home = ({ user }) => {
             setRecoveryToken(result.access_token);
         }
         if (paramsParsed['scene'] !== undefined) {
-            loadScene(paramsParsed  ['scene']).catch(console.error);
+            loadScene(paramsParsed['scene']).catch(console.error);
         } else {
             loadScene(null).catch(console.error);
         }
@@ -90,7 +90,7 @@ const Home = ({ user }) => {
             console.log("error",error);
             setError(error);
         } else {
-            toast("Scene Saved");
+            //toast("Scene Saved");
         }
     }
 
