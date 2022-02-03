@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, React } from "react";
 import { supabase } from "../lib/api";
 import RecoverPassword from "./RecoverPassword";
 import SceneLink from "./SceneLink";
@@ -41,16 +41,16 @@ const Home = ({ user }) => {
             paramsParsed[item[0]] = decodeURIComponent(item[1]);
         });
 
-
         if (result.type === "recovery") {
             setRecoveryToken(result.access_token);
         }
         if (paramsParsed['scene'] !== undefined) {
-            loadScene(paramsParsed['scene']).catch(console.error);
+            setTimeout(() => { loadScene(paramsParsed['scene']).catch(console.error) }, 10);
         } else {
-            loadScene(null).catch(console.error);
+            setTimeout(() => { loadScene(null).catch(console.error) }, 10);
         }
-    }, []);
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
+
 
     const createNewLinkedScene = async () => {
         console.log("create!");
@@ -90,6 +90,7 @@ const Home = ({ user }) => {
             console.log("error",error);
             setError(error);
         } else {
+            console.log(updatedSceneData);
             //toast("Scene Saved");
         }
     }
@@ -110,7 +111,7 @@ const Home = ({ user }) => {
             setSceneTitle(sceneInfo[0].scenetitle);
             loadLinkedScenes(sceneInfo[0].sceneid);
         }
-    }
+    };
 
     const loadLinkedScenes = async (sceneId) => {
         let { data: linkedScenes, error } = await supabase
