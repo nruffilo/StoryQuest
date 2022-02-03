@@ -229,7 +229,7 @@ const Home = ({ user, setLoginScreen }) => {
                             </div>
                         )}
                     </div>
-                    
+                    <ToastContainer/>
 
                 </div>
             case 'CreateScene':
