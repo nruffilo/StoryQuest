@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { supabase } from "../lib/api";
 
-const Auth = () => {
+const Auth = ({ setLoginScreen }) => {
     const [helperText, setHelperText] = useState({ error: null, text: null });
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -12,7 +12,7 @@ const Auth = () => {
 
         const { user, error } =
             type === "LOGIN"
-                ? await supabase.auth.signIn({ email, password })
+                ? await supabase.auth.signIn({ email, password }).then(() => setLoginScreen(false))
                 : await supabase.auth.signUp({ email, password });
 
         if (error) {
@@ -23,13 +23,6 @@ const Auth = () => {
                 text: "An email has been sent to you for verification!",
             });
         }
-    };
-
-    const handleOAuthLogin = async (provider) => {
-        // You need to enable the third party auth you want in Authentication > Settings
-        // Read more on: https://supabase.io/docs/guides/auth#third-party-logins
-        let { error } = await supabase.auth.signIn({ provider });
-        if (error) console.log("Error: ", error.message);
     };
 
     const forgotPassword = async (e) => {
@@ -149,30 +142,7 @@ const Auth = () => {
                     </div>
                 </div>
 
-                <div>
-                    <div className="mt-3">
-                        <span className="block rounded-md shadow-sm">
-                            <button
-                                onClick={() => handleOAuthLogin("github")}
-                                type="button"
-                                className="w-3/4 mx-auto flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out"
-                            >
-                                GitHub
-                            </button>
-                        </span>
-                    </div>
-                    <div className="mt-3">
-                        <span className="block rounded-md shadow-sm">
-                            <button
-                                onClick={() => handleOAuthLogin("google")}
-                                type="button"
-                                className="w-3/4 mx-auto flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out"
-                            >
-                                Google
-                            </button>
-                        </span>
-                    </div>
-                </div>
+               
             </div>
         </div>
     );

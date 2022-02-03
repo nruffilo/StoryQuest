@@ -1,4 +1,4 @@
-import { useEffect, useState, React } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../lib/api";
 import RecoverPassword from "./RecoverPassword";
 import SceneLink from "./SceneLink";
@@ -8,7 +8,7 @@ import 'react-quill/dist/quill.snow.css';
 /*import { ToastContainer, toast } from 'react-toastify';*/
 /*import 'react-toastify/dist/ReactToastify.css';*/
 
-const Home = ({ user }) => {
+const Home = ({ user, setLoginScreen }) => {
     const [recoveryToken, setRecoveryToken] = useState(null);
     const [linkedScenes, setLinkedScenes] = useState([]);
     const [scene, setScene] = useState([]);
@@ -148,19 +148,27 @@ const Home = ({ user }) => {
                     >
                         Story Quest
                     </span>
-                    <button
-                        onClick={handleLogout}
-                        className={
-                            "flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out"
-                        }
-                    >
-                        Logout
-                    </button>
+                    {user === null ? 
+                        <>
+                            <span className={"text-white"} onClick={() => setLoginScreen(true)}>Login/Create</span>
+                        </>
+                    : 
+                    <>
+                        <button
+                            onClick={handleLogout}
+                            className={
+                                "flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out"
+                            }
+                        >
+                            Logout
+                        </button>
+                    </>
+                    }
                 </header>
                 <div
-                    className={"flex flex-col flex-grow p-4 listContainer"}                    
+                    className={"SceneTitle"}                    
                 >
-                        {scene.user_id === user.id ?
+                        {user !== null && scene.user_id === user.id ?
                         <input type="text" value={sceneTitle} onChange={e => setSceneTitle(e.target.value)}></input>
                         :
                         <h2>
@@ -168,11 +176,9 @@ const Home = ({ user }) => {
                         </h2>
                         } 
                     <div
-                        className={`p-2 border grid gap-2 ${
-                            scene.scenedescription ? "auto-rows-min" : ""
-                        } grid-cols-1 h-2/3 overflow-y-scroll first:mt-8`}
+                        className={"SceneDescription"}
                     >
-                        {scene.user_id === user.id ?
+                        {user !== null && scene.user_id === user.id ?
                         <>
                         <ReactQuill
                             theme='snow'
@@ -180,7 +186,6 @@ const Home = ({ user }) => {
                             onChange={setConvertedText}
                             style={{minHeight: '300px'}}
                         />
-                        <br/><br/>
                         <button 
                             className={"justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out"
                             } 
@@ -192,13 +197,17 @@ const Home = ({ user }) => {
                     <div
                         className={`p-2 border grid gap-2`}>
                         {linkedScenes.length ? (
-                            linkedScenes.map((link) => (
+                            <>
+                            <h3>Linked Scenes</h3>
+                            {linkedScenes.map((link) => (
                                 <SceneLink 
+                                    key={link.linkedsceneid}
                                     sceneId={link.linkedsceneid}
                                     sceneLink={link}
                                     onNavigate={() => document.location.href='/?scene='+link.linkedsceneid}
                                 />
-                            ))
+                            ))}
+                            </>
                         ) : (
                             <span
                                 className={

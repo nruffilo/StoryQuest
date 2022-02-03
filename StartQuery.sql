@@ -28,6 +28,7 @@ CREATE TABLE Scene (
   RootDisplayFlag boolean default false,
   PublicFlag boolean default true,
   ReviewFlag boolean default false,
+  PublicRootFlag bool default false,
   RequiredItems varchar default null,  
   CreatedDate timestamp WITH time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
   LastModifiedDate timestamp WITH time zone DEFAULT timezone('utc'::text, now()) NOT NULL
